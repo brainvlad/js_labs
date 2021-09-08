@@ -1,22 +1,22 @@
 /**
  * 1.  Выполните форматирование кода, согласно рекомендациям
 */
-// function pow(x, n) {
-//     let result = 1;
-//     for(let i = 0; i < n; i++){
-//         result *= x;
-//     }
-//     return result;
-// }
-//
-// x = prompt("Число x :", '');
-// n = prompt("Степень n :", '');
-//
-// if (n < 0) {
-//     alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
-// }else{
-//     alert(pow(x, n));
-// }
+function pow(x, n) {
+    let result = 1;
+    for(let i = 0; i < n; i++){
+        result *= x;
+    }
+    return result;
+}
+
+x = prompt("Число x :", '');
+n = prompt("Степень n :", '');
+
+if (n < 0) {
+    alert(`Степень ${n} не поддерживается, введите целую степень, большую 0`);
+}else{
+    alert(pow(x, n));
+}
 
 /** 2.	Объявите переменные и задайте им следующие значения: имя пользователя,
 название города, год рождения, красный цвет, ответ пользователя (да/нет), бесконечность, 532,
@@ -181,11 +181,11 @@ function getInsideQuantity(sideRectangleA, sideRectangleB, sideSquare) {
 
         if (russianIsCompleted && mathIsCompleted && englishIsCompleted) {
             alert('Перевод на следующий курс');
-        }else if(russianIsCompleted || mathIsCompleted || englishIsCompleted) {
+        } else if (russianIsCompleted || mathIsCompleted || englishIsCompleted) {
             alert('Пересдача');
-        }else if (!(russianIsCompleted && mathIsCompleted && englishIsCompleted)) {
+        } else if (!(russianIsCompleted && mathIsCompleted && englishIsCompleted)) {
             alert('Вы отчислены! :-)')
-        }else{
+        } else {
             alert('Остаетесь на 2-й год')
         }
 
@@ -266,7 +266,7 @@ function getInsideQuantity(sideRectangleA, sideRectangleB, sideSquare) {
             console.log('task_16');
 
             const userNumDay = prompt('Введите номер дня недели:', '');
-            switch(userNumDay){
+            switch(userNumDay) {
                 case 1:console.log('Понедельник'); break;
                 case 2:console.log('Вторник'); break;
                 case 3:console.log('Среда'); break;
