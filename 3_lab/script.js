@@ -35,5 +35,54 @@ function task1() {
                         `fixed: ${intUserData}`);
         }
     }
+}
 
+//  task 2
+//  На сайте есть галерея. Ширина блока галереи 940px.
+//  При добавлении фотографии пользователь указывает ее ширину в пикселях.
+//  Блок галереи не имеет внутренних отступов, каждая фотография имеет внешние отступы по 5px.
+//  Исключены левый отступ у левого крайнего изображения и правый – у правого крайнего.
+//  Сколько фотографий поместить в ряд и какой размер отступов должен быть, если отступы должны быть одинаковыми?
+
+function task2() {
+    const widthGallery = 940;
+    let sumWidthPhotos = 0;
+    let countPhotoInGallery = 0;
+
+    while (true) {
+        let userWidthPhoto = +prompt('input width photo: ', '10');
+
+        if (typeof(userWidthPhoto) !== 'number' ||
+            Math.sign(userWidthPhoto) !== 1) {
+            throw new Error('Incorrect value');
+        }
+
+        if (countPhotoInGallery !== 0) {
+            userWidthPhoto += 10;
+        }
+
+        if (sumWidthPhotos + userWidthPhoto <= widthGallery) {
+            countPhotoInGallery++;
+            sumWidthPhotos += userWidthPhoto;
+        } else {
+            break;
+        }
+    }
+
+    const gapGallery = getGapGallery(widthGallery, sumWidthPhotos, countPhotoInGallery);
+
+    console.log(`in gallery ${countPhotoInGallery} photos\n` +
+                `gallery gap: ${gapGallery}`)
+    
+    function getGapGallery(width, sumWidthPhotos, count) {
+        if (count === 0) {
+            return 'gap does not exist';
+        } else if (count === 1) {
+            const padding = (width - sumWidthPhotos) / 2;
+            return `photo in the center. padding: ${padding}`;
+        } else {
+            const gap = ((width - sumWidthPhotos) / (count - 1)) + 10;
+            return `${gap}px`;
+        }
+    }
 }
