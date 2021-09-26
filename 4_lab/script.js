@@ -76,8 +76,6 @@ function task3() {
 
     if (presentDay === 0) {
         presentDay = 7;
-    } else {
-        presentDay += 2;
     }
 
     daysOfWeek.forEach(day => {
