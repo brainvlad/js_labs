@@ -45,6 +45,8 @@ function task1() {
 //  Сколько фотографий поместить в ряд и какой размер отступов должен быть, если отступы должны быть одинаковыми?
 
 function task2() {
+    console.log('task 2:');
+
     const widthGallery = 940;
     let sumWidthPhotos = 0;
     let countPhotoInGallery = 0;
@@ -84,5 +86,29 @@ function task2() {
             const gap = ((width - sumWidthPhotos) / (count - 1)) + 10;
             return `${gap}px`;
         }
+    }
+}
+
+// task 3
+// Пользователь ввел число.
+// Округлите его до наибольшего, наименьшего и ближайшего целого.
+
+function task3() {
+    console.log('task 3:');
+
+    const userNumber = +prompt('input number: ', '0');
+
+    if (typeof(userNumber) === 'number' &&
+        !isNaN(userNumber)) {
+        const numFloor = Math.floor(userNumber);
+        const numCeil = Math.ceil(userNumber);
+        const numRound = Math.round(userNumber);
+
+        console.log(`user number: ${userNumber}\n` +
+            `floor: ${numFloor}\n` +
+            `ceil: ${numCeil}\n` +
+            `numRound: ${numRound}`);
+    } else {
+        throw new Error('Incorrect value');
     }
 }
