@@ -182,7 +182,7 @@ function task5() {
 
     for (let i = 0; i < vocabularyWord.length; i++){
         if (vocabularyWord[i] !== userWord[i]){
-            console.log(`${i+1} symbol incorrect\n`);
+            console.log(`${i + 1} symbol incorrect\n`);
         }else{
             countCorrect++;
         }
@@ -191,5 +191,106 @@ function task5() {
         console.log('correct!');
     } else {
         console.log('incorrect:(');
+    }
+}
+
+// task 6
+// Разработайте геометрический калькулятор для расчета параметров треугольника:
+// площадь, периметр, высота, медиана, биссектриса, cos, sin, tg, ctg.
+// Пользователь указывает длину катетов.
+// Примечание: судя по заданию, имеется ввиду прямоугольный треугольник
+
+function task6() {
+    console.log('task 6:');
+
+    class Triangle {
+        constructor(leg1, leg2) {
+            this.leg1 = leg1;
+            this.leg2 = leg2;
+            this.hypotenuse = Math.sqrt((leg1 * leg1) + (leg2 * leg2));
+        }
+
+        getArea() {
+            return (this.leg1 * this.leg2) / 2
+        }
+
+        getPerimeter() {
+            return this.leg1 + this.leg2 + this.hypotenuse;
+        }
+
+        getSin() {
+            return this.leg1 / this.hypotenuse;
+        }
+
+        getCos() {
+            return this.leg2 / this.hypotenuse;
+        }
+
+        getTg() {
+            return this.leg1 / this.leg2;
+        }
+
+        getCtg() {
+            return this.leg2 / this.leg1;
+        }
+
+        getBisector() {
+            return (Math.sqrt(2) * this.leg1 * this.leg2) / (this.leg1 + this.leg2);
+        }
+
+        getMedian() {
+            return 0.5 * Math.sqrt(2 * this.leg2 * this.leg2 +
+                                      2 * this.hypotenuse * this.hypotenuse - this.leg1 * this.leg1);
+        }
+
+        getHeight() {
+            const area = this.getArea();
+            return 2 * area / this.leg1;
+        }
+
+        getOuterRadius() {
+            const area = this.getArea();
+            return (this.leg1 * this.leg2 * this.hypotenuse) / (4 * area);
+        }
+
+        getInnerRadius() {
+            const area = this.getArea();
+            return 2 * area / (this.leg1 + this.leg2 + this.hypotenuse);
+        }
+    }
+
+    let legs = prompt("input 2 legs:").split(',');
+
+    if (legs.length !== 2) {
+        console.log('the first 2 values will be used');
+    }
+
+    const leg1 = +legs[0];
+    const leg2 = +legs[1];
+
+    if (typeof(leg1) === 'number' &&
+        !isNaN(leg1) &&
+        leg1 > 0 &&
+        typeof(leg2) === 'number' &&
+        !isNaN(leg2) &&
+        leg2 > 0) {
+        const triangle = new Triangle(leg1, leg2);
+
+        console.log(`leg 1: ${triangle.leg1}\n` +
+                    `leg 2: ${triangle.leg2}\n` +
+                    `hypotenuse: ${triangle.hypotenuse}\n` +
+                    `area: ${triangle.getArea()}\n` +
+                    `perimeter: ${triangle.getPerimeter()}\n` +
+                    `sin: ${triangle.getSin()}\n` +
+                    `cos: ${triangle.getCos()}\n` +
+                    `tg: ${triangle.getTg()}\n` +
+                    `ctg: ${triangle.getCtg()}\n` +
+                    `bisector: ${triangle.getBisector()}\n` +
+                    `median: ${triangle.getMedian()}\n` +
+                    `height: ${triangle.getHeight()}\n` +
+                    `outer radius: ${triangle.getOuterRadius()}\n` +
+                    `inner radius: ${triangle.getInnerRadius()}`)
+    } else {
+        throw new Error('Incorrect value');
     }
 }
