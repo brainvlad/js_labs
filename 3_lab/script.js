@@ -23,7 +23,7 @@ function task1() {
             let hexString = userData.toString(16).toUpperCase();
 
             if (hexString.length % 2) {
-                hexString =('0' + hexString);
+                hexString ='0' + hexString;
             }
 
             console.log(`is Integer\n` +
@@ -75,7 +75,8 @@ function task2() {
 
     console.log(`in gallery ${countPhotoInGallery} photos\n` +
                 `gallery gap: ${gapGallery}`)
-    
+
+    // получаем расстаяние между элементами галереи
     function getGapGallery(width, sumWidthPhotos, count) {
         if (count === 0) {
             return 'gap does not exist';
@@ -112,3 +113,57 @@ function task3() {
         throw new Error('Incorrect value');
     }
 }
+
+
+//  task 4
+//  Пользователь хочет изменить цвет фона, для этого он вводит цвет в формате RGB.
+//  Преобразуйте его в 16-ричную систему и предложите пользователю контрастный цвет текста (черный или белый).
+
+function task4() {
+    console.log('task 4:')
+
+    let userBackgroundColorRGB = prompt('Enter RGB coordinates separated by commas (,):').split(',');
+    const userBackgroundColorHEX = getHEX(userBackgroundColorRGB);
+
+    if (userBackgroundColorHEX.length !== 7) {
+        throw new Error('Incorrect value');
+    }
+
+    document.querySelector("body").style.backgroundColor = userBackgroundColorHEX;
+
+    let userTextColor = confirm('Text color: OK - Black, Cancel - White');
+    if(userTextColor){
+        userTextColor = '#000000';
+        document.querySelector("body").style.color = userTextColor;
+    }else{
+        userTextColor = '#ffffff';
+        document.querySelector("body").style.color = userTextColor;
+    }
+
+    console.log(`background color: ${userBackgroundColorHEX}\n` +
+                `text color: ${userTextColor}`);
+
+    // получаем цвет в HEX
+    function getHEX(RGB) {
+        let HEX = '#';
+
+        RGB.forEach(color => {
+            let colorHEX = +color;
+
+            if (colorHEX < 0 ||
+                colorHEX > 255) {
+                    return false;
+            }
+
+            colorHEX = colorHEX.toString(16);
+            if (colorHEX.length % 2) {
+                colorHEX = '0' + colorHEX;
+            }
+
+            HEX += colorHEX;
+        });
+
+        return HEX;
+    }
+}
+
