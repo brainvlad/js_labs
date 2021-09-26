@@ -167,3 +167,29 @@ function task4() {
     }
 }
 
+
+//  task 5
+//  Выпускник сдает ЦТ по русскому языку.
+//  Ему дано словарное слово, необходимо ввести в текстовое поле правильный вариант ответа.
+//  Проверьте его ответ и сообщите в каком символе он допустил ошибку, если она есть.
+
+function task5() {
+    console.log('task 5:');
+
+    let vocabularyWord = 'дорога';
+    let userWord = prompt('input word "дорога": ', 'word').toLowerCase();
+    let countCorrect = 0;
+
+    for (let i = 0; i < vocabularyWord.length; i++){
+        if (vocabularyWord[i] !== userWord[i]){
+            console.log(`${i+1} symbol incorrect\n`);
+        }else{
+            countCorrect++;
+        }
+    }
+    if (vocabularyWord.length === userWord.length && vocabularyWord.length === countCorrect){
+        console.log('correct!');
+    } else {
+        console.log('incorrect:(');
+    }
+}
