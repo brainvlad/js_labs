@@ -3,9 +3,10 @@
 //  Проверьте является ли имя пользователя уникальным.
 
 let users = new Array();
-console.log('task 1:');
 
 function task1() {
+    console.group('task 1');
+
     let userNickname = prompt('input nickname: ', 'nickname');
 
     if (userNickname.trim() === '') {
@@ -19,6 +20,7 @@ function task1() {
     }
 
     console.log('all nicknames:\n' + users);
+    console.groupEnd();
 }
 
 //  task 2
@@ -27,7 +29,7 @@ function task1() {
 //  поиск игроков по первой букве имени.
 
 function task2() {
-    console.log('task 2:')
+    console.group('task 2');
 
     const nicknameLength = +prompt('input length nickname:', '5');
     const nicknameFirstSymbol = prompt('input first symbol:', 'a');
@@ -65,4 +67,95 @@ function task2() {
     console.log('users alphabetically reverse sort:\n' + users.reverse());
     console.log(`users from length (${nicknameLength}):\n` + usersFromLength);
     console.log(`users from first symbol (${nicknameFirstSymbol}):\n` + usersFromFirstSymbol);
+
+    console.groupEnd();
 }
+
+//  task 3
+//  Какую структуру данных (массив или set) вы использовали для решения задач 1 и 2?
+//  Почему?
+//  Для сравнения реализуйте решение задач 1 и 2 выбрав другую структуру.
+
+let usersSet = new Set(users);
+
+function task3() {
+    console.group('task 3');
+
+    let userNickname = prompt('input nickname: ', 'nickname');
+
+    if (userNickname.trim() === '') {
+        throw new Error('Value is Empty');
+    }
+
+    if (!usersSet.has(userNickname)) {
+        usersSet.add(userNickname);
+    } else {
+        console.log(`name ${userNickname} has been busy`);
+    }
+
+    console.group('all users in Set', usersSet);
+    console.groupEnd();
+
+    console.groupEnd();
+
+    console.group('task 4');
+
+    const nicknameLength = +prompt('input length nickname:', '5');
+    const nicknameFirstSymbol = prompt('input first symbol:', 'a');
+    let usersFromLength = new Set();
+    let usersFromFirstSymbol = new Set();
+    let usersSetArr = Array.from(usersSet);
+
+    if (typeof(nicknameLength) === 'number' &&
+        !isNaN(nicknameLength)) {
+        usersFromLength = usersSetArr.map((element, index, array) => {
+            if (element.length === nicknameLength) {
+                return element;
+            }
+        });
+        usersFromLength = usersFromLength.filter(element => {
+            return element != null;
+        });
+    } else {
+        throw new Error('Incorrect value');
+    }
+
+    if (nicknameFirstSymbol.length === 1) {
+        usersFromFirstSymbol = usersSetArr.map((element, index, array) => {
+            if (element[0] === nicknameFirstSymbol) {
+                return element;
+            }
+        });
+        usersFromFirstSymbol = usersFromFirstSymbol.filter(element => {
+            return element != null;
+        });
+    } else {
+        throw new Error('Incorrect value');
+    }
+
+    console.group('users alphabetically sort', usersSetArr.sort());
+    console.groupEnd();
+    console.group('users alphabetically reverse sort', usersSetArr.reverse());
+    console.groupEnd();
+    console.group(`users from length (${nicknameLength})`, + usersFromLength);
+    console.groupEnd();
+    console.group(`users from first symbol (${nicknameFirstSymbol})`, + usersFromFirstSymbol);
+    console.groupEnd();
+
+    console.groupEnd();
+}
+
+//  task 4
+//  Присвойте каждому игроку четырехзначный идентификатор (id может принимать значения в диапазоне [1, 9999])
+//  и сохраните количество набранных им баллов за последнюю игру.
+//  Для имитации набранных баллов используйте методы генерации случайных чисел.
+
+//  task 5
+//  Составьте список игроков, занявших 1-е, 2-е, 3-е места в результате последней игры.
+
+//  task 6
+//  Реализуйте возможность сохранять результаты последних 10 игр.
+//  Использование какой структуры данных здесь рационально?
+
+//  task 7
+//  Увеличьте число игроков до n (n задает преподаватель) и определите победителей по результатам каждой игры.
