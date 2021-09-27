@@ -34,7 +34,21 @@ function task9() {
     }
 
     const questionsCount = +prompt('input count questions:', '5');
+    if (!numberChek(questionsCount)) {
+        throw new Error('Incorrect Error');
+    }
+
     userAnswers.getAnswer();
 
     console.groupEnd();
+}
+
+function numberChek(data) {
+    if (typeof (data) === 'number' &&
+        !isNaN(data) &&
+        data > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
