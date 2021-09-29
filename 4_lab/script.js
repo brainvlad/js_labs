@@ -118,11 +118,11 @@ function task4() {
                          (this.countSlidesInRow)
     }
 
-    // const Slider2 = Object.assign({}, Slider);
-    // Slider2.title = 'Slider-2';
+    const Slider2 = Object.assign({}, Slider);
+    Slider2.title = 'Slider-2';
 
     console.log(Slider);
-    // console.log(Slider2);
+    console.log(Slider2);
 }
 
 // task 5
