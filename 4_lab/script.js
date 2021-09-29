@@ -113,16 +113,16 @@ function task4() {
         marginSlides: 5,
         height: 300,
         width: 1000 + (this.sizeBtnControls * 2),
-        widthFullSlider: (this.width - (this.sizeBtnControls * 2) -
+        widthSlide: (this.width - (this.sizeBtnControls * 2) -
                          (this.countSlidesInRow * (this.marginSlides * 2))) /
                          (this.countSlidesInRow)
     }
 
-    const Slider2 = Object.assign({}, Slider);
-    Slider2.title = 'Slider-2';
+    // const Slider2 = Object.assign({}, Slider);
+    // Slider2.title = 'Slider-2';
 
     console.log(Slider);
-    console.log(Slider2);
+    // console.log(Slider2);
 }
 
 // task 5
