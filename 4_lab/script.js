@@ -114,7 +114,7 @@ function task4() {
         height: 300,
         width: 1000 + (this.sizeBtnControls * 2),
         widthSlide: (this.width - (this.sizeBtnControls * 2) -
-                         (this.countSlidesInRow * (this.marginSlides * 2))) /
+                         (this.countSlidesInRow * (this.marginSlides - 1))) /
                          (this.countSlidesInRow)
     }
 
