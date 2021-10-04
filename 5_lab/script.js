@@ -136,9 +136,9 @@ function task3() {
     console.groupEnd();
     console.group('users alphabetically reverse sort', usersSetArr.reverse());
     console.groupEnd();
-    console.group(`users from length (${nicknameLength})`, + usersFromLength);
+    console.group(`users from length (${nicknameLength})`, usersFromLength);
     console.groupEnd();
-    console.group(`users from first symbol (${nicknameFirstSymbol})`, + usersFromFirstSymbol);
+    console.group(`users from first symbol (${nicknameFirstSymbol})`, usersFromFirstSymbol);
     console.groupEnd();
 
     console.groupEnd();
