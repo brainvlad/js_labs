@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body style="min-height: 100vh; margin: 0; padding: 0;">
-  <!-- <div class="" style="height: 90vh; width: 100%;"></div> -->
+<body style="min-height: 200vh; margin: 0; padding: 0;">
+  <div class="" style="height: 90vh; width: 100%;"></div>
   <video height="100%" width="100%" style="object-fit: contain;" src="wecome.mov" id="merivideo" playsinline webkit-playsinline loop muted></video>
 </body>
 <script
@@ -35,9 +35,6 @@ $('body').on('click touchstart', function () {
             }
     });
 });
-setTimeout(function(){
-  $('body').trigger('touchstart');
-}, 10);
 
 </script>
 </html>
